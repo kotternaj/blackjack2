@@ -32,13 +32,22 @@ class Deck:
         random.shuffle(self.deck)
 
     def deal(self):
-        return self.deck.pop()    
-
+        single_card = self.deck.pop()    
+        return single_card
 
 class Hand:
     def __init__(self):
+        self.cards = []
+        self.value = 0
+        self.aces = 0
+    
+    def add_card(self, card):
+        #card passed in from Deck.deal() -->single Card(suit,rank)
+        self.cards.append(card)
+        self.value += values[card.rank]
+
+    def adjust_for_ace(self):
         pass
-        
 
 class Chips:
     def __init__(self):
@@ -47,4 +56,8 @@ class Chips:
         
 test_deck = Deck()
 test_deck.shuffle()
-print(test_deck)
+test_player = Hand()
+pulled_card = test_deck.deal()
+print(pulled_card)
+test_player.add_card(pulled_card)
+print(test_player.value)
