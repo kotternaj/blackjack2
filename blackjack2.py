@@ -104,7 +104,43 @@ def hit_or_stand(deck, hand):
             print('Please enter h or s')
 
         break
-        
+
+def player_busts(player, dealer, chips):
+    print('Bust player!')
+    chips.lose_bet()
+
+def player_wins(player, dealer, chips):
+    print('You win!')
+    chips.win_bet()
+
+def dealer_busts(player, dealer, chips):
+    print('Player wins! Dealer busted!')
+    chips.win_bet()
+
+def dealer_wins(player, dealer, chips):
+    print('Dealer wins!')
+    chips.lose_bet()
+
+def player_busts(player, dealer):
+    print('Dealer and player tie!')
+
+def show_some(player, dealer):
+    print('Dealers hand: ')
+    print('one card hidden.')
+    print(dealer.cards[1])
+    print('\n')
+    print('Players hand: ')
+    for card in player.cards:
+        print(card)
+
+def show_all(player, dealer):
+    print('Dealers hand: ')
+    for card in dealers.cards:
+        print(card)
+    print('\n')
+    print('Players hand: ')
+    for card in player.cards:
+        print(card)
 
 
 # test_deck = Deck()
