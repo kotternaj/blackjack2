@@ -68,10 +68,49 @@ class Chips:
     def lose_bet(self):
         self.total -= self.bet
         
-test_deck = Deck()
-test_deck.shuffle()
-test_player = Hand()
-pulled_card = test_deck.deal()
-print(pulled_card)
-test_player.add_card(pulled_card)
-print(test_player.value)
+
+def take_bet(chips):
+    while True:
+
+        try: 
+            chips.bet = int(input("How many chips would you like to bet?"))
+        except:
+            print('Please provide an integer')
+        else:
+            if chips.bet > chips.total:
+                print('You do not have enough chips! You have' {}.format(chips.total))
+            else:
+                break
+
+def hit(deck, hand):
+    single_card = deck.deal()
+    hand.add_card(single_card)
+    hand.adjust_for_ace()
+
+def hit_or_stand(deck, hand):
+    global playing #to control an upcoming while loop
+
+    while True:
+        x = input('Hit or Stand? Enter h or s: ')
+        
+        if x[0] == 'h':
+            hit(deck, hand)
+        
+        elif x[0] == 's': 
+            print('Player stands, Dealers turn')
+            playing = False
+        
+        else:
+            print('Please enter h or s')
+
+        break
+        
+
+
+# test_deck = Deck()
+# test_deck.shuffle()
+# test_player = Hand()
+# pulled_card = test_deck.deal()
+# print(pulled_card)
+# test_player.add_card(pulled_card)
+# print(test_player.value)
