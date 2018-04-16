@@ -46,13 +46,27 @@ class Hand:
         self.cards.append(card)
         self.value += values[card.rank]
 
+        #keep track of aces
+        if card.rank == 'Ace':
+            self.aces += 1
+
     def adjust_for_ace(self):
-        pass
+        # if total value is > 21 and i still have an ace
+        #then change my ace to be 1 instead of 11
+        while self.value > 21 and self.aces > 0:
+            self.value -= 10
+            self.aces -= 1
 
 class Chips:
     def __init__(self):
-        self.amount = amount
-        pass
+        self.total = 100
+        self.bet = 0
+        
+    def win_bet(self):
+        self.total += self.bet
+        
+    def lose_bet(self):
+        self.total -= self.bet
         
 test_deck = Deck()
 test_deck.shuffle()
